@@ -80,7 +80,7 @@ func randInt(min int, max int) int {
 }
 
 func runRPC(n string) (res string, isOK bool, statusCode int) {
-	url := "amqp://guest:guest@localhost:5672/"
+	url := "amqp://guest:guest@rabbitmq:5672/"
 	conn, err := amqp.Dial(url)
 	if err != nil {
 		log.Println("failed to open a amqp.Dial. Somethings wrong with RabbitMQ. URL: "+url+" Error:", err)
@@ -156,7 +156,7 @@ func runRPC(n string) (res string, isOK bool, statusCode int) {
 }
 
 func checkRabbitAndWorkers() (bool, int) {
-	url := "amqp://guest:guest@localhost:5672/"
+	url := "amqp://guest:guest@rabbitmq:5672/"
 	conn, err := amqp.Dial(url)
 	if err != nil {
 		log.Println("failed to open a amqp.Dial. Somethings wrong with RabbitMQ. URL: "+url+" Error:", err)
